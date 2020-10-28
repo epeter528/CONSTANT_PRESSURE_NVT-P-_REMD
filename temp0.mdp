@@ -1,0 +1,62 @@
+ title                    = implicit prod.
+ ;Preprocessor
+ cpp			 = /lib/cpp
+ ;Directories to include in the topology format
+ include 		 = -I../top
+ ;Run control: A leap-frog algorithm for integrating Newtons equations.
+ integrator		 = md
+ ;Total simulation time: 100 ps
+ :time step in femtoseconds
+ dt			 = 0.001
+ ;number of steps
+ nsteps  		 =  100000000
+ comm_mode         =  linear 
+ ;frequency to write coordinates to output trajectory file
+ nstxout 		 = 1500 
+ ;frequency to write velocities to output trajectory file
+ nstvout 		 = 1500 
+ ;frequency to write energies to log file
+ nstlog  		 = 1500 
+ ;frequency to write energies to energy file
+ nstenergy		 = 1500 
+ ;frequency to write coordinates to xtc trajectory
+ nstxtcout		 = 1500 
+ ;group(s) to write to xtc trajectory
+ xtc_grps		 = system 
+ group(s) to write to energy file
+ energygrps		 = sol
+ ;Frequency to update the neighbor list (and the long-range forces,
+ ;when using twin-range cut-offs).
+ nstlist 		 = 5
+ ;Make a grid in the box and only check atoms in neighboring grid cells
+ ;when constructing a new neighbor list every nstlist steps.
+ ns_type 		 = grid
+ ;cut-off distance for the short-range neighbor list
+ rlist		 = 1.0 
+ ;treatment of electrostatic interactions
+ coulombtype		 = pme 
+ pme_order            = 4
+ fourierspacing       = 0.12
+ rcoulomb		 = 1.0
+ ;treatment of van der waals interactions
+ vdwtype           = shift 
+ rvdw			 = 1.0
+ ; Periodic boudary conditions in all the directions
+ pbc                      = xyz
+ ;Temperature coupling
+ tcoupl  		 = nose-hoover 
+ tc-grps 		 = system
+ tau_t	        =  1.0 
+            ref_t		 =  297.95
+ ;Pressure coupling
+ Pcoupl  		 = no 
+ Pcoupltype           = isotropic
+ tau_p		 = 1.0
+ compressibility 	 = 4.5e-5
+ ref_p		 = 1.0
+ ;Velocity generation
+ gen_vel 		 = yes
+            gen_temp		 =  297.95
+ gen_seed		 = 173529
+ ;Constrain all bonds
+ constraints		 = none
